@@ -1038,6 +1038,7 @@ MonoBehaviour:
   travelTime: 5
   downTime: 0
   minTravelDistance: 50
+  maxMarkerScale: {x: 2, y: 2, z: 2}
 --- !u!4 &790544397
 Transform:
   m_ObjectHideFlags: 0
@@ -2605,6 +2606,10 @@ PrefabInstance:
     - target: {fileID: 2383554866040530858, guid: 3aa663606b8b85e49957ada03d759175, type: 3}
       propertyPath: m_Name
       value: Missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 2383554866040530858, guid: 3aa663606b8b85e49957ada03d759175, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5426745111348867087, guid: 3aa663606b8b85e49957ada03d759175, type: 3}
       propertyPath: m_RootOrder

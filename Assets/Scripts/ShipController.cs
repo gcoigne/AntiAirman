@@ -13,6 +13,7 @@ public class ShipController: MonoBehaviour
     public float travelTime;
     public float downTime;
     public float minTravelDistance;
+    public Vector3 maxMarkerScale;
     float startTime;
     float endTime;
     // Start is called before the first frame update
@@ -33,8 +34,11 @@ public class ShipController: MonoBehaviour
             float dTime = Time.time - startTime;
             if (dTime < travelTime)
             {
-                ship.transform.position = Vector3.Slerp(shipEntry.transform.position, shipExit.transform.position, dTime / travelTime);
-                ship.transform.rotation = Quaternion.Slerp(shipEntry.transform.rotation, shipExit.transform.rotation, dTime / travelTime);
+                float timeRatio = dTime / travelTime;
+                ship.transform.position = Vector3.Slerp(shipEntry.transform.position, shipExit.transform.position, timeRatio);
+                ship.transform.rotation = Quaternion.Slerp(shipEntry.transform.rotation, shipExit.transform.rotation, timeRatio);
+                shipEntry.transform.localScale = Vector3.Slerp(Vector3.one, Vector3.zero, timeRatio);
+                shipExit.transform.localScale = Vector3.Slerp(maxMarkerScale, Vector3.one, timeRatio);
             }
             else
             {
