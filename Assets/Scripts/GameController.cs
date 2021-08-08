@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class ShipController: MonoBehaviour
+public class GameController: MonoBehaviour
 {
     public GameObject ship;
     public GameObject shipEntry;
     public GameObject shipExit;
     public Ship shipScript;
+    public Shooter shooterScript;
+    public Image healthDisplay;
+    public Text scoreDisplay;
     public Vector3 shipSpaceMin;
     public Vector3 shipSpaceMax;
     public float travelTime;
@@ -53,6 +58,17 @@ public class ShipController: MonoBehaviour
                 ShipEnter();
                 startTime += travelTime;
             }
+        }
+        if(shooterScript.health == 0)
+        {
+            shipScript.hitCount = 0;
+            shooterScript.health = 1;
+        }
+        else
+        {
+            healthDisplay.transform.localScale = new Vector3(1, shooterScript.health);
+            healthDisplay.color = new Color(1 - shooterScript.health, 0, shooterScript.health);
+            scoreDisplay.text = shipScript.hitCount.ToString();
         }
     }
 

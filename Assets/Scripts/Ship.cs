@@ -10,10 +10,12 @@ public class Ship : MonoBehaviour
     public float shotCooldown;
     public float shotOffsetMag;
     public float shotTime;
+    public int hitCount;
 
     void Start()
     {
         shotTime = 0;
+        hitCount = 0;
     }
 
     void Update()
@@ -28,6 +30,7 @@ public class Ship : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         gameObject.SetActive(false);
+        hitCount++;
     }
 
     void Shoot()
